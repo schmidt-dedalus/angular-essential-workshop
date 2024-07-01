@@ -1,0 +1,70 @@
+<div class="card">
+  <div class="header">
+    <h2>Flight Search</h2>
+  </div>
+  <div class="content">
+    <form (submit)="search()">
+      <div class="form-group">
+        <label for="fs_from">From</label>
+        <input id="fs_from" class="form-control" name="from" [(ngModel)]="from" />
+      </div>
+      <div class="form-group">
+        <label for="fs_to">To</label>
+        <input id="fs_to" class="form-control" name="to" [(ngModel)]="to" />
+      </div>
+      <div class="form-group">
+        <button class="btn btn-default" [disabled]="!to || !from">Search</button>
+      </div>
+    </form>
+  </div>
+</div>
+<div class="card" *ngIf="flights.length > 0">
+  <table class="table">
+    <thead>
+      <th>Id</th>
+      <th>From</th>
+      <th>To</th>
+      <th>Date</th>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="let flight of flights"
+        [class]="{ active: selectedFlight?.id === flight.id, 'bg-warning': flight.delayed }"
+      >
+        <td>{{ flight.id }}</td>
+        <td>{{ flight.from }}</td>
+        <td>{{ flight.to }}</td>
+        <td>{{ flight.date | date: 'dd.MM.yyyy HH:mm' }}</td>
+        <td><button (click)="selectedFlight = flight" class="btn btn-default">Select</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="card" *ngIf="selectedFlight">
+  <div class="content">
+    <div>{{ message }}</div>
+    <div class="form-group">
+      <label>Id</label>
+      <input class="form-control" [(ngModel)]="selectedFlight.id" />
+    </div>
+    <div class="form-group">
+      <label>From</label>
+      <input class="form-control" [(ngModel)]="selectedFlight.from" />
+    </div>
+    <div class="form-group">
+      <label>To</label>
+      <input class="form-control" [(ngModel)]="selectedFlight.to" />
+    </div>
+    <div class="form-group">
+      <label>Date</label>
+      <input class="form-control" [(ngModel)]="selectedFlight.date" />
+    </div>
+    <div class="form-check">
+      <input type="checkbox" class="form-check-input" [(ngModel)]="selectedFlight.delayed" />
+      <label class="form-check-label">Delayed</label>
+    </div>
+    <div class="form-group">
+      <button class="btn btn-default" (click)="save()">Save</button>
+    </div>
+  </div>
+</div>
