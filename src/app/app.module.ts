@@ -7,10 +7,18 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { FlightSearchComponent } from './flight-search/flight-search.component';
+import { AbstractFlightService } from './flight-search/abstract-flight.service';
+import { FlightService } from './flight-search/flight.service';
 
 @NgModule({
   imports: [BrowserModule, HttpClientModule, FormsModule],
   declarations: [AppComponent, NavbarComponent, SidebarComponent, FlightSearchComponent],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  providers: [
+    {
+      provide: AbstractFlightService,
+      useClass: FlightService
+    }
+  ]
 })
 export class AppModule {}

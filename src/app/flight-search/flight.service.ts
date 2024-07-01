@@ -2,11 +2,12 @@ import { inject, Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { catchError, map, Observable, switchMap } from 'rxjs';
 import { Flight } from '../entities/flight';
+import { AbstractFlightService } from './abstract-flight.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class FlightService {
+export class FlightService implements AbstractFlightService {
   private static readonly URL = 'http://www.angular.at/api/flight';
 
   private readonly http = inject(HttpClient);

@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { Flight } from '../entities/flight';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { FlightService } from './flight.service';
+import { AbstractFlightService } from './abstract-flight.service';
 
 const url = 'http://www.angular.at/api/flight';
 
@@ -18,7 +18,7 @@ export class FlightSearchComponent {
   message = '';
 
   private readonly http = inject(HttpClient);
-  private readonly flightService = inject(FlightService);
+  private readonly flightService = inject(AbstractFlightService);
 
   search(): void {
     if (this.from.length === 0 || this.to.length === 0) return;
