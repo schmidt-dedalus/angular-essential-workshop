@@ -1,0 +1,10 @@
+{
+  "Graz": {
+    "long": "Flughafen Graz Thalerhof",
+    "short": "GRZ"
+  },
+  "Hamburg": {
+    "long": "Airport Hamburg Helmut Schmidt",
+    "short": "HAM"
+  }
+}

@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { catchError, map, Observable, switchMap } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Flight } from '../entities/flight';
 import { AbstractFlightService } from './abstract-flight.service';
 

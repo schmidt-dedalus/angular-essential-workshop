@@ -1,7 +1,8 @@
 import { Component, inject } from '@angular/core';
 import { Flight } from '../entities/flight';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { AbstractFlightService } from './abstract-flight.service';
+import { CityFormatting } from '../shared/pipes/city.pipe';
 
 const url = 'http://www.angular.at/api/flight';
 
@@ -16,7 +17,7 @@ export class FlightSearchComponent {
   flights: Flight[] = [];
   selectedFlight?: Flight;
   message = '';
-
+  protected readonly CityFormatting = CityFormatting;
   private readonly http = inject(HttpClient);
   private readonly flightService = inject(AbstractFlightService);
 
