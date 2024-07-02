@@ -17,12 +17,15 @@ export class FlightSearchComponent {
   flights: Flight[] = [];
   selectedFlight?: Flight;
   message = '';
+  basket: { [id: number]: boolean } = {};
   protected readonly CityFormatting = CityFormatting;
+  protected readonly Object = Object;
   private readonly http = inject(HttpClient);
   private readonly flightService = inject(AbstractFlightService);
 
   search(): void {
     if (this.from.length === 0 || this.to.length === 0) return;
+    this.basket = {};
 
     this.flightService.search(this.from, this.to).subscribe({
       next: (next) => (this.flights = next),

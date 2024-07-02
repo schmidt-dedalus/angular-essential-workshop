@@ -1,0 +1,30 @@
+<div [style.background-color]="selected ? 'rgb(204, 197, 185)' : ''" class="card">
+  <div class="header">
+    <ng-content select=".top" />
+  </div>
+
+  <div class="content">
+    <p>Flight-No.: #{{ item.id }}</p>
+    <p>Date: {{ item.date | date: 'dd.MM.yyyy HH:mm' }}</p>
+    <p>
+      <button
+        (click)="select()"
+        *ngIf="!selected; else deselect"
+        class="btn btn-default"
+        type="button"
+      >
+        Select
+      </button>
+    </p>
+    <p>
+      <app-status-toggle [(delayed)]="item.delayed" />
+    </p>
+    <ng-content select=".bottom" />
+  </div>
+</div>
+
+<ng-template #deselect>
+  <button (click)="remove()" *ngIf="selected" class="btn btn-default" type="button">
+    Deselect
+  </button>
+</ng-template>

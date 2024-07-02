@@ -5,9 +5,11 @@ import { FormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { FlightService } from './flight-search/flight.service';
 import { AbstractFlightService } from './flight-search/abstract-flight.service';
+import { FlightCardComponent } from './flight-card/flight-card.component';
+import { StatusToggleComponent } from './status-toggle/status-toggle.component';
 
 @NgModule({
-  declarations: [FlightSearchComponent],
+  declarations: [FlightSearchComponent, FlightCardComponent, StatusToggleComponent],
   imports: [CommonModule, FormsModule, SharedModule],
   exports: [FlightSearchComponent],
   providers: [
