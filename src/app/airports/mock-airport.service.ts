@@ -7,6 +7,6 @@ import { Observable, of } from 'rxjs';
 })
 export class MockAirportService implements AbstractAirportService {
   findAll(): Observable<string[]> {
-    return of(['a', 'b', 'c', 'd']);
+    return of(['1Trier', '2Berlin']);
   }
 }

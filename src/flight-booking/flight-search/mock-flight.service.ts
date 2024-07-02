@@ -6,9 +6,7 @@ import { Observable, of } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class DummyFlightService implements AbstractFlightService {
-  constructor() {}
-
+export class MockFlightService implements AbstractFlightService {
   save(flight: Flight): Observable<Flight> {
     return of(flight);
   }

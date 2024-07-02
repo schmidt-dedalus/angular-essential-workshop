@@ -5,7 +5,22 @@
 
   <div class="content">
     <div class="row">
-      <div *ngFor="let airport of airports" class="col-lg-3">{{ airport }}</div>
+      <div *ngIf="!isLoading; else isLoadingAsyncAirports">
+        <div *ngFor="let airport of airports" class="col-lg-3">{{ airport }}</div>
+      </div>
+    </div>
+  </div>
+  <div class="content">
+    <div class="row">
+      <div *ngIf="airports$ | async as asyncAirPorts; else isLoadingAsyncAirports">
+        <div *ngFor="let airport of asyncAirPorts" class="col-lg-3">{{ airport }}</div>
+      </div>
     </div>
   </div>
 </div>
+
+<ng-template #isLoadingAsyncAirports>
+  <div class="row">
+    <div class="col-lg-3">...isLoadingAsyncPipe</div>
+  </div>
+</ng-template>

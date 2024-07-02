@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import * as citiesJson from '../../../assets/json/cities.json';
+import * as citiesJson from '../../assets/json/cities.json';
 
 export enum CityFormatting {
   SHORT,

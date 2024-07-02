@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { Flight } from '../entities/flight';
 import { HttpClient } from '@angular/common/http';
 import { AbstractFlightService } from './abstract-flight.service';
-import { CityFormatting } from '../shared/pipes/city.pipe';
+import { CityFormatting } from '../../shared/pipes/city.pipe';
 
 const url = 'http://www.angular.at/api/flight';
 
