@@ -8,6 +8,8 @@ import { AbstractFlightService } from './flight-search/abstract-flight.service';
 import { FlightCardComponent } from './flight-card/flight-card.component';
 import { StatusToggleComponent } from './status-toggle/status-toggle.component';
 import { FlightEditComponent } from './flight-edit/flight-edit.component';
+import { RouterModule } from '@angular/router';
+import { flightBookingRoutes } from './flight-booking.routes';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,13 @@ import { FlightEditComponent } from './flight-edit/flight-edit.component';
     StatusToggleComponent,
     FlightEditComponent
   ],
-  imports: [CommonModule, FormsModule, SharedModule, ReactiveFormsModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    SharedModule,
+    ReactiveFormsModule,
+    RouterModule.forChild(flightBookingRoutes)
+  ],
   exports: [FlightSearchComponent],
   providers: [
     {

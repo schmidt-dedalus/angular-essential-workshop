@@ -15,7 +15,9 @@
       >
         Select
       </button>
-      <button (click)="edit()" class="btn btn-default" type="button">Edit</button>
+      <a [routerLink]="['../flight-search', item.id, { showDetails: true }]" class="btn btn-default"
+        >Edit</a
+      >
     </p>
     <p>
       <app-status-toggle [(delayed)]="item.delayed" />
