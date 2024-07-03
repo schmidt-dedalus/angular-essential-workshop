@@ -20,6 +20,8 @@ export class FlightSearchComponent {
   basket: { [id: number]: boolean } = {};
   protected readonly CityFormatting = CityFormatting;
   protected readonly Object = Object;
+  protected readonly Number = Number;
+  protected readonly screenLeft = screenLeft;
   private readonly http = inject(HttpClient);
   private readonly flightService = inject(AbstractFlightService);
 

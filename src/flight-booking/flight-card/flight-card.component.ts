@@ -11,6 +11,7 @@ export class FlightCardComponent {
   @Input() selected = false;
   @Input() delayed = false;
   @Output() selectedChange = new EventEmitter<boolean>();
+  @Output() editClicked = new EventEmitter<void>();
 
   select() {
     this.selected = true;
@@ -20,5 +21,9 @@ export class FlightCardComponent {
   remove() {
     this.selected = false;
     this.selectedChange.emit(this.selected);
+  }
+
+  edit() {
+    this.editClicked.emit();
   }
 }

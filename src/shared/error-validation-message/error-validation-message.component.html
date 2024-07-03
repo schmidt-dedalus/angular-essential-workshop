@@ -1,0 +1,15 @@
+<ng-container *ngIf="errors && hasChanged"
+  ><!--Errors: {{ errors | json }}-->
+  <pre *ngIf="errors['minlength']" class="bg-danger"
+    >{{ label }} should be longer than {{
+      errors['minlength']['requiredLength']
+    }} characters but were {{ errors['minlength']['actualLength'] }}</pre
+  >
+  <pre *ngIf="errors['pattern']" class="bg-danger"
+    >{{ label }} should be of Pattern {{ errors['pattern']['requiredPattern'] }}</pre
+  >
+  <pre *ngIf="errors['required']" class="bg-danger">{{ label }} is required</pre>
+  <pre *ngIf="errors['min']" class="bg-danger"
+    >{{ label }} cannot be smaller than {{ errors['min']['min'] }}</pre
+  >
+</ng-container>

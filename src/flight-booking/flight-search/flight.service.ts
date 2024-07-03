@@ -24,4 +24,11 @@ export class FlightService implements AbstractFlightService {
 
     return this.http.post<Flight>(FlightService.URL, flight, { headers });
   }
+
+  findById(id: string): Observable<Flight> {
+    const headers = new HttpHeaders().set('Accept', 'application/json');
+    const params = new HttpParams().set('id', id);
+
+    return this.http.get<Flight>(FlightService.URL, { headers, params });
+  }
 }
