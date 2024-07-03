@@ -1,7 +1,14 @@
-import { Component, inject, Input, OnChanges, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  inject,
+  Input,
+  OnChanges,
+  Output,
+  SimpleChanges
+} from '@angular/core';
 import { Flight } from '../entities/flight';
 import { FormBuilder, Validators } from '@angular/forms';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-flight-edit',
@@ -10,6 +17,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 })
 export class FlightEditComponent implements OnChanges {
   @Input({ required: true }) flight!: Flight;
+  @Output() save = new EventEmitter<Flight>();
 
   editForm = inject(FormBuilder).group({
     id: [0, [Validators.required, Validators.min(1)]],
@@ -18,22 +26,22 @@ export class FlightEditComponent implements OnChanges {
     date: ['', [Validators.required, Validators.minLength(32), Validators.maxLength(32)]]
   });
   message = '';
-  protected readonly String = String;
-
-  constructor() {
-    this.editForm.valueChanges.pipe(takeUntilDestroyed()).subscribe((value) => {
-      console.debug('formValue ', value);
-    });
-  }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log(this.editForm.value);
-    console.log(this.editForm.valid);
-    console.log(this.editForm.touched);
-    console.log(this.editForm.dirty);
-
     if (this.flight) {
       this.editForm.patchValue(this.flight);
+    }
+  }
+
+  submit() {
+    if (this.editForm.valid) {
+      this.save.emit({
+        ...this.flight,
+        id: this.editForm.value.id ?? this.flight.id,
+        from: this.editForm.value.from ?? this.flight.from,
+        to: this.editForm.value.to ?? this.flight.to,
+        date: this.editForm.value.date ?? this.flight.date
+      });
     }
   }
 }
